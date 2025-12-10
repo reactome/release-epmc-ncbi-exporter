@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>org.reactome.release</groupId>
 	<artifactId>data-exporter</artifactId>
 	<version>1.2.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
+
 	<name>data-exporter</name>
 	<description>Data exports for submission to NCBI, UCSC, and Europe PMC</description>
 	<url>https://reactome.org</url>
@@ -14,6 +16,7 @@
 			<url>https://www.gnu.org/licenses/agpl-3.0.txt</url>
 		</license>
 	</licenses>
+
 	<developers>
 		<developer>
 			<name>Joel Weiser</name>
@@ -22,12 +25,14 @@
 			<organizationUrl>https://reactome.org</organizationUrl>
 		</developer>
 	</developers>
+
 	<scm>
 		<connection>scm:git:git://github.com/reactome/release-data-exporter.git</connection>
 		<developerConnection>scm:git:ssh://github.com/reactome/release-data-exporter.git</developerConnection>
 		<url>https://github.com/reactome/release-data-exporter</url>
 		<tag>develop</tag>
 	</scm>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!--
@@ -37,6 +42,7 @@
 		<skipITs>false</skipITs>
 		<junit.version>5.5.2</junit.version>
 	</properties>
+
 	<dependencies>
 		<!-- Main dependencies -->
 		<dependency>
@@ -103,6 +109,7 @@
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
+
 	<repositories>
 		<!-- required for Reactome library SNAPSHOTS prior to release on Maven Central -->
 		<repository>
@@ -116,6 +123,7 @@
 			</snapshots>
 		</repository>
 	</repositories>
+
 	<build>
 		<resources>
 			<resource>
