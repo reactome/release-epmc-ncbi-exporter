@@ -160,6 +160,7 @@
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
+					<finalName>data-exporter</finalName>
 				</configuration>
 				<executions>
 					<execution>

@@ -32,7 +32,7 @@ FROM eclipse-temurin:11-jre-focal
 
 ARG REPO_DIR
 
-ARG JAR_FILE=target/release-data-exporter.jar
+ARG JAR_FILE=target/data-exporter-jar-with-dependencies.jar
 
 WORKDIR ${REPO_DIR}
 
