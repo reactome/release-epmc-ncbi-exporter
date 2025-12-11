@@ -68,9 +68,8 @@
 		<dependency>
 			<groupId>org.reactome.release</groupId>
 			<artifactId>release-common-lib</artifactId>
-			<version>1.2.0</version>
+			<version>2.0.0</version>
 		</dependency>
-
 		<!-- Test dependencies -->
 		<dependency>
 			<groupId>org.hamcrest</groupId>
@@ -102,7 +101,6 @@
 			<version>3.5.13</version>
 			<scope>test</scope>
 		</dependency>
-
 		<!-- Compilation dependencies -->
 		<dependency>
 			<groupId>org.jetbrains</groupId>
@@ -144,10 +142,8 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-
 			<!--
 			allows 'mvn clean compile assembly:single' command to create a jar with dependencies
-
 			execution section also allows 'mvn clean package' command to create two jars - with/without dependencies
 			-->
 			<plugin>
@@ -164,6 +160,7 @@
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
+					<finalName>data-exporter</finalName>
 				</configuration>
 				<executions>
 					<execution>
@@ -175,7 +172,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
@@ -198,7 +194,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<!-- executes unit tests -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -213,7 +208,6 @@
 					</systemProperties>
 				</configuration>
 			</plugin>
-
 			<!--
 			allows 'mvn release' command to create a new release of the project
 			https://maven.apache.org/maven-release/maven-release-plugin/
@@ -230,7 +224,6 @@
 					<tagNameFormat>v@{project.version}</tagNameFormat>
 				</configuration>
 			</plugin>
-
 			<!--
 			checks the POM file has the order specified by the POM Code Convention
 			http://maven.apache.org/developers/conventions/code.html#POM_Code_Convention
@@ -248,6 +241,32 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.1.1</version>
+				<dependencies>
+					<!-- This dependency allows Checkstyle to understand Java 11 syntax -->
+					<dependency>
+						<groupId>com.puppycrawl.tools</groupId>
+						<artifactId>checkstyle</artifactId>
+						<version>8.44</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>checkstyle-check</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<configLocation>checkstyle.xml</configLocation>
+					<!-- Optional: Set encoding -->
+					<encoding>UTF-8</encoding>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
