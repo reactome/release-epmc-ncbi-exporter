@@ -32,7 +32,7 @@ FROM eclipse-temurin:11-jre-focal
 
 ARG REPO_DIR
 
-ARG JAR_FILE=target/release-epmc-ncbi-exporter-with-dependencies.jar
+ARG JAR_FILE=target/release-epmc-ncbi-exporter-jar-with-dependencies.jar
 
 WORKDIR ${REPO_DIR}
 
