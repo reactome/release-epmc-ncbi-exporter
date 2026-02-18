@@ -78,11 +78,14 @@ public class DataExporterStep extends ReleaseStep {
 			EuropePMC.getInstance(outputDir, reactomeReleaseNumber).writeEuropePMCFiles(graphDBSession);
 		}
 
-		// Upload Europe PMC Profile and Link Files (and delete previous release Europe PMC Profile and Link Files)
-		EuropePMCFileUploader.getInstance(props).updateFilesOnServer();
+		boolean uploadFiles = Boolean.parseBoolean(props.getProperty("uploadFiles"));
+		if (uploadFiles) {
+			// Upload Europe PMC Profile and Link Files (and delete previous release Europe PMC Profile and Link Files)
+			EuropePMCFileUploader.getInstance(props).updateFilesOnServer();
 
-		// Upload NCBI Gene and Protein Files (and delete previous release NCBI Gene and Protein Files)
-		NCBIFileUploader.getInstance(props).updateFilesOnServer();
+			// Upload NCBI Gene and Protein Files (and delete previous release NCBI Gene and Protein Files)
+			NCBIFileUploader.getInstance(props).updateFilesOnServer();
+		}
 
 		logger.info("Finished NCBI, UCSC, and Europe PMC export step");
 	}
