@@ -5,33 +5,29 @@ import org.reactome.release.jenkins.utilities.Utilities
 
 def utils = new Utilities()
 
-pipeline
-{
+pipeline {
 	agent any
 
-	stages
-	{
-		stage('Main: Run Data-Exporter')
-		{
-			steps
-			{
-				script
-				{
-					withCredentials([file(credentialsId: 'Config', variable: 'CONFIG_FILE')])
-					{
+	stages {
+		stage('Main: Run EuropePMC-NCBI-Exporter') {
+			steps {
+				script {
+					withCredentials([file(credentialsId: 'Config', variable: 'CONFIG_FILE')]) {
 						writeFile file: 'config.properties', text: readFile(CONFIG_FILE)
-						sh "./runDataExporter.sh --config_file config.properties --build_jar"
+						sh "mvn clean package -DskipTests"
+						sh "java -jar release-epmc-ncbi-exporter-jar-with-dependencies.jar -c config.properties"
 						sh "rm config.properties"
 					}
+
 					// clean up old jars
 					sh "mvn clean"
 				}
 			}
 		}
 
-		stage('Post: Archive Outputs'){
-			steps{
-				script{
+		stage('Post: Archive Outputs') {
+			steps {
+				script {
 					// Shared library maintained at 'release-jenkins-utils' repository.
 					def currentRelease = utils.getReleaseVersion()
 					def s3Path = "${env.S3_RELEASE_DIRECTORY_URL}/${currentRelease}/data-exporter"
