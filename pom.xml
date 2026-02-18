@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.reactome.release</groupId>
-	<artifactId>data-exporter</artifactId>
+	<artifactId>release-epmc-ncbi-exporter</artifactId>
 	<version>1.2.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>data-exporter</name>
+	<name>release-epmc-ncbi-exporter</name>
 	<description>Data exports for submission to NCBI, UCSC, and Europe PMC</description>
 	<url>https://reactome.org</url>
 	<licenses>
@@ -27,9 +27,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:git://github.com/reactome/release-data-exporter.git</connection>
-		<developerConnection>scm:git:ssh://github.com/reactome/release-data-exporter.git</developerConnection>
-		<url>https://github.com/reactome/release-data-exporter</url>
+		<connection>scm:git:git://github.com/reactome/release-epmc-ncbi-exporter.git</connection>
+		<developerConnection>scm:git:ssh://github.com/reactome/release-epmc-ncbi-exporter.git</developerConnection>
+		<url>https://github.com/reactome/release-epmc-ncbi-exporter</url>
 		<tag>develop</tag>
 	</scm>
 
