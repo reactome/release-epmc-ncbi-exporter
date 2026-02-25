@@ -85,6 +85,8 @@ public class DataExporterStep extends ReleaseStep {
 
 			// Upload NCBI Gene and Protein Files (and delete previous release NCBI Gene and Protein Files)
 			NCBIFileUploader.getInstance(props).updateFilesOnServer();
+		} else {
+			logger.info("Created files will not be uploaded to servers, as configured");
 		}
 
 		logger.info("Finished NCBI, UCSC, and Europe PMC export step");
