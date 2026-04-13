@@ -15,7 +15,7 @@ pipeline {
 					withCredentials([file(credentialsId: 'Config', variable: 'CONFIG_FILE')]) {
 						writeFile file: 'config.properties', text: readFile(CONFIG_FILE)
 						sh "mvn clean package -DskipTests"
-						sh "java -jar release-epmc-ncbi-exporter-jar-with-dependencies.jar -c config.properties"
+						sh "java -jar target/release-epmc-ncbi-exporter-jar-with-dependencies.jar -c config.properties"
 						sh "rm config.properties"
 					}
 
