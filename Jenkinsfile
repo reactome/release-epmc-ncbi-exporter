@@ -30,7 +30,7 @@ pipeline {
 				script {
 					// Shared library maintained at 'release-jenkins-utils' repository.
 					def currentRelease = utils.getReleaseVersion()
-					def s3Path = "${env.S3_RELEASE_DIRECTORY_URL}/${currentRelease}/data-exporter"
+					def s3Path = "${env.S3_RELEASE_DIRECTORY_URL}/${currentRelease}/epmc-ncbi-exporter"
 					sh "mkdir -p data/"
 					sh "mv output/* data/"
 					sh "find data/ -type f ! -name \"*.gz\" -exec gzip -f {} ';'"
